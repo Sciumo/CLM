@@ -3,6 +3,7 @@ server) plus an LRU cache of L2-normalised embeddings.
 
 The reference head expects Qwen3-8B with last-token pooling, e.g.
 
+    VLLM_NO_USAGE_STATS=1 VLLM_DO_NOT_TRACK=1 DO_NOT_TRACK=1 \\
     vllm serve Qwen/Qwen3-8B --served-model-name qwen3-8b --runner pooling \\
          --enable-prefix-caching --max-model-len 2048 --port 8090
 """

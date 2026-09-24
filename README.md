@@ -53,6 +53,8 @@ Requires Python 3.10+, Linux and an NVIDIA GPU. Installs everything, including P
 
 ```bash
 # 1. encoder: Qwen3-8B, last-token pooling (what the reference head was trained against)
+#    the env vars turn off vLLM's anonymous usage reporting
+VLLM_NO_USAGE_STATS=1 VLLM_DO_NOT_TRACK=1 DO_NOT_TRACK=1 \
 vllm serve Qwen/Qwen3-8B --served-model-name qwen3-8b --runner pooling \
      --enable-prefix-caching --max-model-len 2048 --gpu-memory-utilization 0.35 --port 8090
 

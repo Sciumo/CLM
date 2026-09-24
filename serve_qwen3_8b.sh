@@ -6,6 +6,10 @@
 #
 # Usage: GPU=0 PORT=8090 UTIL=0.35 ./serve_qwen3_8b.sh
 set -u
+# No phone home: vLLM usage stats off (DO_NOT_TRACK also covers huggingface_hub telemetry).
+export VLLM_NO_USAGE_STATS="${VLLM_NO_USAGE_STATS:-1}"
+export VLLM_DO_NOT_TRACK="${VLLM_DO_NOT_TRACK:-1}"
+export DO_NOT_TRACK="${DO_NOT_TRACK:-1}"
 GPU="${GPU:-0}"
 PORT="${PORT:-8090}"
 UTIL="${UTIL:-0.35}"

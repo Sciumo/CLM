@@ -17,6 +17,10 @@ import sys
 
 import numpy as np
 
+# No phone home: vLLM usage stats off (DO_NOT_TRACK also covers huggingface_hub telemetry).
+for _k in ("VLLM_NO_USAGE_STATS", "VLLM_DO_NOT_TRACK", "DO_NOT_TRACK"):
+    os.environ.setdefault(_k, "1")
+
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 from clm.embedder import EmbedderError, l2  # noqa: E402
 
